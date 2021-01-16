@@ -17,6 +17,9 @@ def create_app():
 
     db.init_app(app)
 
+    from . import auth
+    app.register_blueprint(auth.bp)
+
     @app.route('/hola')
     def hola(): 
         return 'Hola mundo!'
