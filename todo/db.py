@@ -25,6 +25,18 @@ def close_db(e=None):
     if db is not None: 
         db.close()
 
+def init_db(): 
+    db, c = get_db
+
+    for i in instuctions: 
+        c.execute(i)
+    
+    db.commit()
+
+def init_deb_command(): 
+    init_db()
+    click.echo('Base de datos inicializada')
+
 def init_app(app): 
     app.teardown_appcontext(close_db)
 
